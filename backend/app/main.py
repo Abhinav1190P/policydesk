@@ -97,7 +97,7 @@ def create_app() -> FastAPI:
         ms = round((time.perf_counter() - started) * 1000, 1)
         response.headers["X-Instance"] = s.instance_id
         response.headers["X-Request-Id"] = rid
-        if request.url.path != "/api/health":
+        if request.url.path not in ("/api/health", "/api/ping"):
             user = getattr(request.state, "user", None)
             log.info(
                 "request",
@@ -107,6 +107,10 @@ def create_app() -> FastAPI:
 
     for r in (auth.router, chat.router, agent.router, documents.router, tickets.router, admin.router, internal.router):
         app.include_router(r)
+
+    @app.get("/api/ping")
+    async def ping():
+        return {"ok": True, "instance": s.instance_id}
 
     @app.get("/api/health")
     async def health():

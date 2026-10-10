@@ -79,3 +79,10 @@ HYBRID_CASES = [
 @pytest.mark.parametrize("service,operation,params", HYBRID_CASES, ids=[f"{c[1]}-{i}" for i, c in enumerate(HYBRID_CASES)])
 def test_hybrid_experiment_requests_match_aws_api(service, operation, params):
     validate(service, operation, params)
+
+
+def test_budget_action_and_cost_types_are_valid():
+    validate("budgets", "CreateBudget", aws.budget_params(N, "3", "me@example.com"))
+    validate("budgets", "CreateBudgetAction", aws.budget_action_params(N, "arn:aws:iam::123456789012:policy/policydesk-deny-bedrock", ARN, "me@example.com"))
+    assert aws.budget_params(N, "3", "x@y.z")["Budget"]["CostTypes"]["IncludeCredit"] is False
+    assert aws.DENY_BEDROCK["Statement"][0]["Effect"] == "Deny"

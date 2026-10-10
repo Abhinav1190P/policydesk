@@ -275,3 +275,19 @@ async def test_kb_ingestion_writes_metadata_sidecar_and_syncs(services, aws, mon
     agent.assert_no_pending_responses()
     row = await get_pool().fetchrow("SELECT status, s3_key FROM documents WHERE id = $1", uuid.UUID(doc["id"]))
     assert row["status"] == "ready" and row["s3_key"] == key
+
+
+async def test_admin_kb_sync_uploads_only_own_tenant(client, acme_admin, aws, monkeypatch):
+    s = get_settings()
+    monkeypatch.setattr(s, "retriever", "bedrock_kb")
+    monkeypatch.setattr(s, "s3_bucket", "pd-bucket")
+    s3 = aws("s3")
+    tenant = acme_admin["user"]["tenant_id"]
+    n = await get_pool().fetchval("SELECT count(*) FROM documents WHERE tenant_id = $1 AND status = 'ready'", uuid.UUID(tenant))
+    for _ in range(n * 2):
+        s3.add_response("put_object", {}, {"Bucket": "pd-bucket", "Key": ANY, "Body": ANY, "ContentType": ANY, "ServerSideEncryption": "AES256"})
+    r = await client.post("/api/admin/kb/sync", headers=acme_admin["headers"])
+    assert r.status_code == 202 and r.json()["uploaded"] == n
+    s3.assert_no_pending_responses()
+    keys = await get_pool().fetch("SELECT s3_key FROM documents WHERE s3_key IS NOT NULL AND tenant_id <> $1", uuid.UUID(tenant))
+    assert keys == [] or all(k["s3_key"].startswith(f"tenants/") for k in keys)

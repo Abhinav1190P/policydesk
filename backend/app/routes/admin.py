@@ -1,12 +1,13 @@
 import uuid
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 
 from app.config import get_settings
 from app.db.pool import get_pool
 from app.infra import cache, spend
 from app.infra.broker import broker
 from app.security import CurrentUser, admin_user
+from app.services import ingest
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
@@ -66,3 +67,12 @@ async def usage_summary(days: int = Query(default=14, ge=1, le=90), user: Curren
         "aws": await spend.status(),
         "backend": {"ai": s.ai_backend, "embeddings": s.embed_backend, "retriever": s.retriever, "agent": s.agent_mode},
     }
+
+
+@router.post("/kb/sync", status_code=202)
+async def kb_sync(user: CurrentUser = Depends(admin_user)):
+    try:
+        n = await ingest.push_tenant_docs_to_kb(user.tenant_id)
+    except ingest.UploadError as e:
+        raise HTTPException(e.status, str(e))
+    return {"uploaded": n, "status": "sync queued"}

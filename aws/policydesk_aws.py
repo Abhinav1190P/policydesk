@@ -283,7 +283,13 @@ def logging_config(n: Names, role_arn: str) -> dict:
 def budget_params(n: Names, amount: str, email: str) -> dict:
     return {
         "AccountId": n.account,
-        "Budget": {"BudgetName": n.budget, "BudgetLimit": {"Amount": amount, "Unit": "USD"}, "TimeUnit": "MONTHLY", "BudgetType": "COST"},
+        "Budget": {
+            "BudgetName": n.budget,
+            "BudgetLimit": {"Amount": amount, "Unit": "USD"},
+            "TimeUnit": "MONTHLY",
+            "BudgetType": "COST",
+            "CostTypes": {"IncludeCredit": False, "IncludeRefund": False, "IncludeDiscount": False},
+        },
         "NotificationsWithSubscribers": [
             {
                 "Notification": {"NotificationType": nt, "ComparisonOperator": "GREATER_THAN", "Threshold": th, "ThresholdType": "PERCENTAGE"},
@@ -291,6 +297,37 @@ def budget_params(n: Names, amount: str, email: str) -> dict:
             }
             for nt, th in (("ACTUAL", 50.0), ("ACTUAL", 90.0), ("FORECASTED", 100.0))
         ],
+    }
+
+
+DENY_BEDROCK = {"Version": "2012-10-17", "Statement": [{"Effect": "Deny", "Action": "bedrock:*", "Resource": "*"}]}
+
+
+def budget_action_role_policy(n: Names, deny_arn: str) -> dict:
+    return {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": ["iam:AttachUserPolicy", "iam:DetachUserPolicy"],
+                "Resource": f"arn:aws:iam::{n.account}:user/{n.app_user}",
+                "Condition": {"ArnEquals": {"iam:PolicyARN": deny_arn}},
+            }
+        ],
+    }
+
+
+def budget_action_params(n: Names, deny_arn: str, role_arn: str, email: str) -> dict:
+    return {
+        "AccountId": n.account,
+        "BudgetName": n.budget,
+        "NotificationType": "ACTUAL",
+        "ActionType": "APPLY_IAM_POLICY",
+        "ActionThreshold": {"ActionThresholdValue": 100.0, "ActionThresholdType": "PERCENTAGE"},
+        "Definition": {"IamActionDefinition": {"PolicyArn": deny_arn, "Users": [n.app_user]}},
+        "ExecutionRoleArn": role_arn,
+        "ApprovalModel": "AUTOMATIC",
+        "Subscribers": [{"SubscriptionType": "EMAIL", "Address": email}],
     }
 
 
@@ -486,6 +523,44 @@ class Setup:
         except bud.exceptions.DuplicateRecordException:
             log("budget already exists")
 
+    def budget_stop(self):
+        if not self.args.budget_email:
+            log("no --budget-email given; skipping automatic Bedrock stop")
+            return
+        iam = self.c("iam")
+        name = f"{self.n.prefix}-deny-bedrock"
+        deny_arn = f"arn:aws:iam::{self.n.account}:policy/{name}"
+        try:
+            iam.create_policy(PolicyName=name, PolicyDocument=json.dumps(DENY_BEDROCK), Description="Attached automatically by AWS Budgets when PolicyDesk spend passes the limit")
+        except iam.exceptions.EntityAlreadyExistsException:
+            pass
+        budgets_trust = {
+            "Version": "2012-10-17",
+            "Statement": [{"Effect": "Allow", "Principal": {"Service": "budgets.amazonaws.com"}, "Action": "sts:AssumeRole", "Condition": {"StringEquals": {"aws:SourceAccount": self.n.account}}}],
+        }
+        role_name = f"{self.n.prefix}-budget-action-role"
+        try:
+            role_arn = iam.get_role(RoleName=role_name)["Role"]["Arn"]
+        except iam.exceptions.NoSuchEntityException:
+            role_arn = iam.create_role(RoleName=role_name, AssumeRolePolicyDocument=json.dumps(budgets_trust))["Role"]["Arn"]
+            time.sleep(10)
+        iam.put_role_policy(RoleName=role_name, PolicyName=f"{role_name}-inline", PolicyDocument=json.dumps(budget_action_role_policy(self.n, deny_arn)))
+        bud = self.session.client("budgets", region_name="us-east-1")
+        existing = bud.describe_budget_actions_for_budget(AccountId=self.n.account, BudgetName=self.n.budget).get("Actions", [])
+        if existing:
+            log("automatic Bedrock stop already configured")
+            return
+        for attempt in range(6):
+            try:
+                bud.create_budget_action(**budget_action_params(self.n, deny_arn, role_arn, self.args.budget_email))
+                break
+            except Exception as e:
+                if attempt == 5:
+                    raise
+                log(f"waiting for IAM to propagate ({type(e).__name__})")
+                time.sleep(10)
+        log(f"when spend passes ${self.args.budget_usd} (credits excluded), AWS Budgets attaches {name} to {self.n.app_user} and Bedrock stops")
+
     def app_identity(self):
         iam = self.c("iam")
         policy = app_policy(self.n, self.args.model, self.state["kb_id"], self.state["agent_id"], self.state["agent_alias_id"], self.state["guardrail_arn"])
@@ -520,7 +595,7 @@ class Setup:
         )
 
     def run(self):
-        steps = [self.buckets, self.knowledge_base, self.guardrail, self.lambda_fn, self.agent, self.logging, self.budget, self.app_identity]
+        steps = [self.buckets, self.knowledge_base, self.guardrail, self.lambda_fn, self.agent, self.logging, self.budget, self.app_identity, self.budget_stop]
         only = set(self.args.only.split(",")) if self.args.only else None
         for step in steps:
             if only and step.__name__ not in only:
@@ -624,7 +699,7 @@ def main(argv=None):
     p.add_argument("--app-url", default=os.environ.get("POLICYDESK_URL", "https://example.invalid"))
     p.add_argument("--internal-secret", default=os.environ.get("INTERNAL_TOOLS_SECRET", ""))
     p.add_argument("--budget-email", default=os.environ.get("BUDGET_EMAIL"))
-    p.add_argument("--budget-usd", default="5")
+    p.add_argument("--budget-usd", default="3")
     p.add_argument("--only", help="comma separated setup steps to run")
     p.add_argument("--keep-docs", action="store_true")
     p.add_argument("--delete-app-user", action="store_true")

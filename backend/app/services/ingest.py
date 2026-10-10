@@ -229,3 +229,26 @@ async def delete_document(tenant_id: str, document_id: str) -> bool:
         )
         await broker.publish(INGEST, {"op": "sync", "tenant_id": tenant_id}, message_id=f"sync-{uuid.uuid4().hex}")
     return True
+
+
+async def push_tenant_docs_to_kb(tenant_id: str) -> int:
+    s = get_settings()
+    if s.retriever != "bedrock_kb" or not s.s3_bucket:
+        raise UploadError("Set RETRIEVER=bedrock_kb and S3_BUCKET first", 409)
+    rows = await get_pool().fetch(
+        "SELECT id, tenant_id, title, filename, mime, category, content FROM documents WHERE tenant_id = $1 AND status = 'ready'",
+        uuid.UUID(tenant_id),
+    )
+    s3 = bedrock.client("s3")
+    types = {"pdf": "application/pdf", "md": "text/markdown", "txt": "text/plain"}
+    for doc in rows:
+        key, meta_key = s3_keys(str(doc["tenant_id"]), str(doc["id"]), doc["filename"])
+        try:
+            await asyncio.to_thread(s3.put_object, Bucket=s.s3_bucket, Key=key, Body=bytes(doc["content"]), ContentType=types.get(doc["mime"], "application/octet-stream"), ServerSideEncryption="AES256")
+            await asyncio.to_thread(s3.put_object, Bucket=s.s3_bucket, Key=meta_key, Body=json.dumps(kb_metadata(doc)).encode(), ContentType="application/json", ServerSideEncryption="AES256")
+        except (ClientError, BotoCoreError) as e:
+            raise UploadError(f"S3 upload failed: {bedrock.to_provider_error(e)}", 502)
+        await get_pool().execute("UPDATE documents SET s3_key = $2 WHERE id = $1", doc["id"], key)
+    await broker.publish(INGEST, {"op": "sync", "tenant_id": tenant_id}, message_id=f"sync-{uuid.uuid4().hex}")
+    await cache.bump_doc_version(tenant_id)
+    return len(rows)
