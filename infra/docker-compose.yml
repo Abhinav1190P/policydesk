@@ -1,0 +1,80 @@
+name: policydesk
+
+x-api: &api
+  build: ../backend
+  env_file: ../backend/.env
+  environment: &api-env
+    DATABASE_URL: postgresql://policydesk:policydesk@postgres:5432/policydesk
+    REDIS_URL: redis://redis:6379/0
+    RABBITMQ_URL: amqp://policydesk:policydesk@rabbitmq:5672/
+    CORS_ORIGINS: http://localhost:8080
+    RUN_WORKER_IN_PROCESS: "false"
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+    rabbitmq: { condition: service_healthy }
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.1-pg16
+    environment:
+      POSTGRES_USER: policydesk
+      POSTGRES_PASSWORD: policydesk
+      POSTGRES_DB: policydesk
+    volumes: [pgdata:/var/lib/postgresql/data]
+    ports: ["55432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U policydesk"]
+      interval: 3s
+      retries: 20
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 20
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: policydesk
+      RABBITMQ_DEFAULT_PASS: policydesk
+    ports: ["5672:5672", "15672:15672"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      retries: 30
+
+  api-1:
+    <<: *api
+    environment: { <<: *api-env, INSTANCE_ID: api-1 }
+  api-2:
+    <<: *api
+    environment: { <<: *api-env, INSTANCE_ID: api-2 }
+  api-3:
+    <<: *api
+    environment: { <<: *api-env, INSTANCE_ID: api-3 }
+
+  worker:
+    <<: *api
+    command: ["python", "-m", "app.worker"]
+    environment: { <<: *api-env, INSTANCE_ID: worker }
+    deploy:
+      replicas: 2
+
+  web:
+    build: ../frontend
+    depends_on: [api-1, api-2, api-3]
+
+  nginx:
+    image: nginx:1.27-alpine
+    volumes: ["./nginx.conf:/etc/nginx/nginx.conf:ro"]
+    ports: ["8080:80"]
+    depends_on: [api-1, api-2, api-3, web]
+
+volumes:
+  pgdata:

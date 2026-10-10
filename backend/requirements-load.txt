@@ -1,0 +1,2 @@
+-r requirements-dev.txt
+locust==2.46.7

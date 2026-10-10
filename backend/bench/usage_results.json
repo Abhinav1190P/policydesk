@@ -1,0 +1,146 @@
+{
+  "rows": 10000000,
+  "tenants": 200,
+  "months": 12,
+  "setup": {
+    "fill_flat_s": 40.732147510000004,
+    "fill_part_s": 59.195343472999866
+  },
+  "variants": {
+    "flat, no index": {
+      "Q1 tenant monthly cost": {
+        "median_ms": 918.978,
+        "shared_hit": 192,
+        "shared_read": 153655,
+        "scans": [
+          "Seq Scan"
+        ],
+        "relations": 1
+      },
+      "Q2 tenant latest 50 rows": {
+        "median_ms": 605.07,
+        "shared_hit": 384,
+        "shared_read": 153463,
+        "scans": [
+          "Seq Scan"
+        ],
+        "relations": 1
+      },
+      "Q3 platform 1-day totals": {
+        "median_ms": 1356.355,
+        "shared_hit": 576,
+        "shared_read": 153271,
+        "scans": [
+          "Seq Scan"
+        ],
+        "relations": 1
+      }
+    },
+    "flat + btree(tenant_id, created_at) + brin(created_at)": {
+      "Q1 tenant monthly cost": {
+        "median_ms": 5.698,
+        "shared_hit": 4082,
+        "shared_read": 0,
+        "scans": [
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan"
+        ],
+        "relations": 1
+      },
+      "Q2 tenant latest 50 rows": {
+        "median_ms": 0.035,
+        "shared_hit": 48,
+        "shared_read": 0,
+        "scans": [
+          "Index Scan"
+        ],
+        "relations": 1
+      },
+      "Q3 platform 1-day totals": {
+        "median_ms": 10.534,
+        "shared_hit": 475,
+        "shared_read": 0,
+        "scans": [
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan"
+        ],
+        "relations": 1
+      }
+    },
+    "flat + btree only": {
+      "Q1 tenant monthly cost": {
+        "median_ms": 5.323,
+        "shared_hit": 4082,
+        "shared_read": 0,
+        "scans": [
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan"
+        ],
+        "relations": 1
+      },
+      "Q2 tenant latest 50 rows": {
+        "median_ms": 0.047,
+        "shared_hit": 48,
+        "shared_read": 0,
+        "scans": [
+          "Index Scan"
+        ],
+        "relations": 1
+      },
+      "Q3 platform 1-day totals": {
+        "median_ms": 1187.278,
+        "shared_hit": 4584,
+        "shared_read": 149263,
+        "scans": [
+          "Seq Scan"
+        ],
+        "relations": 1
+      }
+    },
+    "monthly partitions + local btree": {
+      "Q1 tenant monthly cost": {
+        "median_ms": 5.871,
+        "shared_hit": 4136,
+        "shared_read": 0,
+        "scans": [
+          "Bitmap Heap Scan",
+          "Bitmap Index Scan"
+        ],
+        "relations": 1
+      },
+      "Q2 tenant latest 50 rows": {
+        "median_ms": 0.095,
+        "shared_hit": 47,
+        "shared_read": 0,
+        "scans": [
+          "Index Scan"
+        ],
+        "relations": 12
+      },
+      "Q3 platform 1-day totals": {
+        "median_ms": 128.059,
+        "shared_hit": 4274,
+        "shared_read": 8547,
+        "scans": [
+          "Seq Scan"
+        ],
+        "relations": 1
+      }
+    }
+  },
+  "sizes_mb": {
+    "flat_table": 1260.3,
+    "flat_btree": 315.4,
+    "flat_brin": 0.18,
+    "partition_btrees_total": 357.4
+  },
+  "index_build_s": {
+    "btree": 8.94,
+    "brin": 1.67
+  },
+  "retention": {
+    "delete_one_month_s": 0.666,
+    "deleted": "DELETE 833334",
+    "detach_drop_partition_s": 0.098
+  }
+}

@@ -1,0 +1,57 @@
+services:
+  - type: web
+    name: policydesk-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: INSTANCE_ID
+        value: render-1
+      - key: RUN_WORKER_IN_PROCESS
+        value: "true"
+      - key: AI_BACKEND
+        value: groq
+      - key: EMBED_BACKEND
+        value: cohere
+      - key: RETRIEVER
+        value: pgvector
+      - key: AGENT_MODE
+        value: local
+      - key: FALLBACK_BACKEND
+        value: stub
+      - key: MIN_RELEVANCE
+        value: "0.25"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INTERNAL_TOOLS_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: RABBITMQ_URL
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: COHERE_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+  - type: web
+    name: policydesk-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false

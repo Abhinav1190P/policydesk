@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+node_modules/
+dist/
+aws/state.json
+aws/hybrid_state.json
+aws/app-policy.json
+backend/bench/load/*.csv
+.trash-*

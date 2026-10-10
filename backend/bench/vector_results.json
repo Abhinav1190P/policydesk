@@ -1,0 +1,90 @@
+{
+  "n": 100000,
+  "dim": 1024,
+  "queries": 200,
+  "k": 10,
+  "tenants": 50,
+  "load_s": 4.19,
+  "exact": {
+    "p50_ms": 484.33,
+    "p95_ms": 597.33,
+    "filtered_p50_ms": 24.55
+  },
+  "hnsw_build_s": 70.9,
+  "hnsw_size_mb": 819.2,
+  "table_size_mb": 561.7,
+  "sweep": [
+    {
+      "ef_search": 10,
+      "recall": 0.7805,
+      "p50_ms": 1.82,
+      "p95_ms": 3.87,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.021,
+      "filtered_avg_returned": 0.21,
+      "filtered_iter_recall": 0.924,
+      "filtered_iter_p95_ms": 17.85
+    },
+    {
+      "ef_search": 20,
+      "recall": 0.8945,
+      "p50_ms": 2.09,
+      "p95_ms": 3.15,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.0405,
+      "filtered_avg_returned": 0.43,
+      "filtered_iter_recall": 0.9255,
+      "filtered_iter_p95_ms": 18.67
+    },
+    {
+      "ef_search": 40,
+      "recall": 0.9345,
+      "p50_ms": 2.45,
+      "p95_ms": 3.75,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.0845,
+      "filtered_avg_returned": 0.87,
+      "filtered_iter_recall": 0.9295,
+      "filtered_iter_p95_ms": 18.89
+    },
+    {
+      "ef_search": 80,
+      "recall": 0.971,
+      "p50_ms": 2.74,
+      "p95_ms": 4.18,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.175,
+      "filtered_avg_returned": 1.8,
+      "filtered_iter_recall": 0.9355,
+      "filtered_iter_p95_ms": 19.18
+    },
+    {
+      "ef_search": 160,
+      "recall": 0.9865,
+      "p50_ms": 2.95,
+      "p95_ms": 5.23,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.333,
+      "filtered_avg_returned": 3.37,
+      "filtered_iter_recall": 0.9435,
+      "filtered_iter_p95_ms": 19.68
+    },
+    {
+      "ef_search": 320,
+      "recall": 0.996,
+      "p50_ms": 3.56,
+      "p95_ms": 6.21,
+      "filtered_natural_plan": "exact",
+      "filtered_forced_plan": "hnsw",
+      "filtered_recall": 0.644,
+      "filtered_avg_returned": 6.45,
+      "filtered_iter_recall": 0.9525,
+      "filtered_iter_p95_ms": 23.09
+    }
+  ]
+}

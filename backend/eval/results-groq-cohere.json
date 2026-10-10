@@ -1,0 +1,2074 @@
+[
+  {
+    "strategy": "fixed",
+    "chunks": 50,
+    "ingest_s": 3.8,
+    "retrieval_hit_rate": 1.0,
+    "answer_accuracy": 0.95,
+    "refusal_accuracy": 1.0,
+    "cross_tenant_ok": "4/4",
+    "leaks": 0,
+    "tool_accuracy": 0.5,
+    "p50_latency_ms": 842.0,
+    "rows": [
+      {
+        "id": "a01",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "24"
+        ],
+        "answer": "Employees receive 24 days of paid annual leave per calendar year. [1]",
+        "latency_ms": 897,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a02",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many unused annual leave days can be carried forward?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "8"
+        ],
+        "answer": "You can carry forward up to **8 unused annual leave days** into the next calendar year. [1]",
+        "latency_ms": 811,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a03",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How long is paternity leave?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "4 weeks"
+        ],
+        "answer": "Paternity leave is 4\u202fweeks of paid leave. [1]",
+        "latency_ms": 811,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a04",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Which days am I expected to be in the office?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "Tuesday"
+        ],
+        "answer": "You\u2019re expected to be in the office on the anchor days: Tuesday, Wednesday, and Thursday each week. Teams can change these days only with director approval. [1]",
+        "latency_ms": 1011,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a05",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much internet reimbursement do I get per month?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "You can claim up to\u202fRs\u202f1,500\u202fper month for internet reimbursement.\u202f[1]",
+        "latency_ms": 1049,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Benefits Guide"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a06",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the hotel cap per night in metro cities?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "7,000"
+        ],
+        "answer": "The hotel cap in metro cities is Rs\u202f7,000 per night. [1]",
+        "latency_ms": 935,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a07",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the per diem for international travel?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "60"
+        ],
+        "answer": "The per diem for international travel is USD\u202f60 per day. [1]",
+        "latency_ms": 1026,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a08",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Within how many days must expense reports be submitted?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "30 days"
+        ],
+        "answer": "Expense reports must be submitted within 30 days of the expense. [1]",
+        "latency_ms": 1213,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a09",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the minimum password length?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "14"
+        ],
+        "answer": "The minimum password length is **14 characters**\u30101\u3011.",
+        "latency_ms": 998,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a10",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How quickly must I report a lost laptop?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "2 hours"
+        ],
+        "answer": "You must report a lost or stolen laptop within **2 hours** of discovering it. This allows IT to lock and wipe the device remotely. [1]",
+        "latency_ms": 872,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [
+          "Acme Cloud IT and Security Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a11",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the yearly learning budget?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "50,000"
+        ],
+        "answer": "The yearly learning budget is\u202fRs\u202f50,000\u202fper financial year.\u202f[1]",
+        "latency_ms": 843,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a12",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much is the wellness allowance?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "1,000"
+        ],
+        "answer": "The wellness allowance is Rs\u202f1,000 per month. [1]",
+        "latency_ms": 841,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a13",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "18"
+        ],
+        "answer": "Employees receive 18 days of paid annual leave per calendar year. [1]",
+        "latency_ms": 828,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a14",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of casual leave do we get?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "3 days"
+        ],
+        "answer": "You get 3 days of casual leave per year. [1]",
+        "latency_ms": 874,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a15",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the shift differential for the night shift?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "10%"
+        ],
+        "answer": "The night shift (Shift\u202fC) earns a shift differential of **10\u202f% of basic pay** for each night shift worked\u30101\u3011.",
+        "latency_ms": 866,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "cited": [],
+        "refused": false,
+        "hit": true,
+        "correct": false,
+        "ok": false
+      },
+      {
+        "id": "a16",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the overtime pay rate?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "twice"
+        ],
+        "answer": "Overtime on a public holiday is paid at three times the normal hourly rate. [1] Overtime is paid at twice the normal hourly rate. [1]",
+        "latency_ms": 383,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a17",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the daily allowance on business travel?",
+        "doc": "Globex Manufacturing Travel and Expense Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "The daily allowance for business travel is Rs\u202f1,500 per day for meals and local travel within India. [1]",
+        "latency_ms": 876,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a18",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "Can I use a USB drive on my work computer?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "blocked"
+        ],
+        "answer": "USB storage drives are blocked on all company computers. [1]",
+        "latency_ms": 486,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a19",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How often do passwords need to be changed?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "90 days"
+        ],
+        "answer": "Passwords must be at least 12 characters and must be changed every 90 days. [1]",
+        "latency_ms": 583,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a20",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What safety gear is required on the production floor?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "helmet"
+        ],
+        "answer": "Safety shoes, a helmet, and safety glasses must be worn at all times on the production floor. [1] Personal phones may not be used on the production floor except in designated zones. [2]",
+        "latency_ms": 404,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "u01",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "Who won the cricket world cup?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 403,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u02",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "What is the company's stock price today?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 406,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u03",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "Do we get free gym membership?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 380,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u04",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "What is the work from anywhere policy?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 433,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "x01",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "What is the night shift differential percentage?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 874,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x02",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "When is the annual plant maintenance shutdown?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 463,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x03",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "How much is the home office allowance for new joiners?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 37503,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x04",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "Which app is used for multi-factor authentication?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 426,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "t01",
+        "type": "action",
+        "tenant": "acme",
+        "q": "How many leave days do I have left?",
+        "tool": "get_leave_balance",
+        "ok": true,
+        "got_tool": "get_leave_balance"
+      },
+      {
+        "id": "t02",
+        "type": "action",
+        "tenant": "acme",
+        "q": "My laptop battery is broken, please raise a ticket",
+        "tool": "create_it_ticket",
+        "ok": false,
+        "got_tool": null
+      },
+      {
+        "id": "t03",
+        "type": "action",
+        "tenant": "globex",
+        "q": "I am locked out of my account and cannot log in",
+        "tool": "create_it_ticket",
+        "ok": false,
+        "got_tool": null
+      },
+      {
+        "id": "t04",
+        "type": "action",
+        "tenant": "globex",
+        "q": "What is the hotel limit when I travel?",
+        "tool": "search_policies",
+        "ok": true,
+        "got_tool": "search_policies"
+      }
+    ]
+  },
+  {
+    "strategy": "hierarchical",
+    "chunks": 50,
+    "ingest_s": 4.64,
+    "retrieval_hit_rate": 1.0,
+    "answer_accuracy": 0.95,
+    "refusal_accuracy": 1.0,
+    "cross_tenant_ok": "4/4",
+    "leaks": 0,
+    "tool_accuracy": 1.0,
+    "p50_latency_ms": 437.0,
+    "rows": [
+      {
+        "id": "a01",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "24"
+        ],
+        "answer": "Employees receive 24 days of paid annual leave per calendar year. [1]",
+        "latency_ms": 887,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a02",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many unused annual leave days can be carried forward?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "8"
+        ],
+        "answer": "You can carry forward up to **8 unused annual leave days** into the next calendar year. [1]",
+        "latency_ms": 866,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a03",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How long is paternity leave?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "4 weeks"
+        ],
+        "answer": "Paternity leave is 4\u202fweeks of paid leave. [1]",
+        "latency_ms": 843,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a04",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Which days am I expected to be in the office?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "Tuesday"
+        ],
+        "answer": "You\u2019re expected to be in the office on the anchor days: Tuesday, Wednesday and Thursday each week. Teams can change these days only with director approval. [1]",
+        "latency_ms": 991,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a05",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much internet reimbursement do I get per month?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "You can claim up to **Rs\u202f1,500 per month** for internet reimbursement. [1]",
+        "latency_ms": 647,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Benefits Guide"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a06",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the hotel cap per night in metro cities?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "7,000"
+        ],
+        "answer": "Hotel stays are capped at Rs 7,000 per night in metro cities (Mumbai, Delhi NCR, Bengaluru, Chennai, Hyderabad, Kolkata, Pune) and Rs 4,500 per night in other Indian cities. [1] International hotel caps are listed in Navan for each city. [1]",
+        "latency_ms": 599,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a07",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the per diem for international travel?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "60"
+        ],
+        "answer": "International travel gets a per diem of USD 60 per day. [1] Domestic travel gets a per diem of Rs 2,000 per day for meals and local transport. [1]",
+        "latency_ms": 461,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a08",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Within how many days must expense reports be submitted?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "30 days"
+        ],
+        "answer": "Submit expense reports in Expensify within 30 days of the expense. [1] Reports submitted after 60 days will not be reimbursed. [1]",
+        "latency_ms": 374,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a09",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the minimum password length?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "14"
+        ],
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 542,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "hit": true,
+        "correct": false,
+        "ok": false
+      },
+      {
+        "id": "a10",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How quickly must I report a lost laptop?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "2 hours"
+        ],
+        "answer": "Report a lost or stolen device within 2 hours to it-help@acmecloud.example or on the IT help line +91 80 4000 1234, so the device can be locked and wiped remotely. [1]",
+        "latency_ms": 427,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [
+          "Acme Cloud IT and Security Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a11",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the yearly learning budget?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "50,000"
+        ],
+        "answer": "Each employee has a learning budget of Rs 50,000 per financial year for courses, certifications, books and conferences. [1] Acme Cloud Benefits Guide > Learning budget. [1]",
+        "latency_ms": 355,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a12",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much is the wellness allowance?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "1,000"
+        ],
+        "answer": "The wellness allowance is Rs\u202f1,000 per month. [1]",
+        "latency_ms": 524,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a13",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "18"
+        ],
+        "answer": "Permanent employees get 18 days of paid annual leave per calendar year. [1] Employees get 7 days of paid sick leave per year. [3]",
+        "latency_ms": 389,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a14",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of casual leave do we get?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "3 days"
+        ],
+        "answer": "Employees get 3 days of casual leave per year for personal matters. [1] Non-birthing parents get 10 days of paid paternity leave within 3 months of the birth. [4]",
+        "latency_ms": 389,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a15",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the shift differential for the night shift?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "10%"
+        ],
+        "answer": "Employees working Shift C (night shift) receive a shift differential of 10% of their basic pay for every night shift worked. [1] The plants run three shifts: Shift A from 6:00 AM to 2:00 PM, Shift B from 2:00 PM to 10:00 PM, and Shift C (night shift) from 10:00 PM to 6:00 AM. [2]",
+        "latency_ms": 404,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a16",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the overtime pay rate?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "twice"
+        ],
+        "answer": "Overtime on a public holiday is paid at three times the normal hourly rate. [1] Overtime is paid at twice the normal hourly rate. [1]",
+        "latency_ms": 396,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a17",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the daily allowance on business travel?",
+        "doc": "Globex Manufacturing Travel and Expense Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "Employees on business travel get a daily allowance of Rs 1,500 per day for meals and local travel within India. [1] Globex Manufacturing Travel and Expense Policy > Daily allowance. [1]",
+        "latency_ms": 369,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a18",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "Can I use a USB drive on my work computer?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "blocked"
+        ],
+        "answer": "USB storage drives are blocked on all company computers. [1]",
+        "latency_ms": 434,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a19",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How often do passwords need to be changed?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "90 days"
+        ],
+        "answer": "Passwords must be at least 12 characters and must be changed every 90 days. [1]",
+        "latency_ms": 377,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a20",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What safety gear is required on the production floor?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "helmet"
+        ],
+        "answer": "Safety shoes, a helmet, and safety glasses must be worn at all times on the production floor. [1] Personal phones may not be used on the production floor except in designated zones. [2]",
+        "latency_ms": 440,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "u01",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "Who won the cricket world cup?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 329,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u02",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "What is the company's stock price today?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 832,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u03",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "Do we get free gym membership?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 407,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u04",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "What is the work from anywhere policy?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 475,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "x01",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "What is the night shift differential percentage?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 376,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x02",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "When is the annual plant maintenance shutdown?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 504,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x03",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "How much is the home office allowance for new joiners?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 42667,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x04",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "Which app is used for multi-factor authentication?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 374,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "t01",
+        "type": "action",
+        "tenant": "acme",
+        "q": "How many leave days do I have left?",
+        "tool": "get_leave_balance",
+        "ok": true,
+        "got_tool": "get_leave_balance"
+      },
+      {
+        "id": "t02",
+        "type": "action",
+        "tenant": "acme",
+        "q": "My laptop battery is broken, please raise a ticket",
+        "tool": "create_it_ticket",
+        "ok": true,
+        "got_tool": "create_it_ticket"
+      },
+      {
+        "id": "t03",
+        "type": "action",
+        "tenant": "globex",
+        "q": "I am locked out of my account and cannot log in",
+        "tool": "create_it_ticket",
+        "ok": true,
+        "got_tool": "create_it_ticket"
+      },
+      {
+        "id": "t04",
+        "type": "action",
+        "tenant": "globex",
+        "q": "What is the hotel limit when I travel?",
+        "tool": "search_policies",
+        "ok": true,
+        "got_tool": "search_policies"
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "chunks": 71,
+    "ingest_s": 12.95,
+    "retrieval_hit_rate": 1.0,
+    "answer_accuracy": 0.95,
+    "refusal_accuracy": 1.0,
+    "cross_tenant_ok": "4/4",
+    "leaks": 0,
+    "tool_accuracy": 0.5,
+    "p50_latency_ms": 876.0,
+    "rows": [
+      {
+        "id": "a01",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "24"
+        ],
+        "answer": "Employees receive 24 days of paid annual leave per calendar year. [1]",
+        "latency_ms": 841,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a02",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How many unused annual leave days can be carried forward?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "8"
+        ],
+        "answer": "You can carry forward up to 8 unused annual leave days into the next calendar year. [2]",
+        "latency_ms": 889,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a03",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How long is paternity leave?",
+        "doc": "Acme Cloud Leave Policy",
+        "expect": [
+          "4 weeks"
+        ],
+        "answer": "Paternity leave is 4\u202fweeks of paid leave. [1]",
+        "latency_ms": 822,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a04",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Which days am I expected to be in the office?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "Tuesday"
+        ],
+        "answer": "You\u2019re expected to be in the office on **Tuesday, Wednesday, and Thursday** each week. [1]",
+        "latency_ms": 916,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a05",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much internet reimbursement do I get per month?",
+        "doc": "Acme Cloud Hybrid and Remote Work Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "You can claim up to\u202fRs\u202f1,500 per month for internet reimbursement.\u202f[1]",
+        "latency_ms": 1096,
+        "retrieved": [
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a06",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the hotel cap per night in metro cities?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "7,000"
+        ],
+        "answer": "The hotel cap per night in metro cities is Rs\u202f7,000. [1]",
+        "latency_ms": 43488,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a07",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the per diem for international travel?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "60"
+        ],
+        "answer": "The per diem for international travel is USD\u202f60 per day. [1]",
+        "latency_ms": 955,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a08",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "Within how many days must expense reports be submitted?",
+        "doc": "Acme Cloud Travel and Expense Policy",
+        "expect": [
+          "30 days"
+        ],
+        "answer": "Expense reports must be submitted within 30 days of the expense. [1]",
+        "latency_ms": 824,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a09",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the minimum password length?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "14"
+        ],
+        "answer": "The minimum password length is 14 characters. [1]",
+        "latency_ms": 798,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy"
+        ],
+        "cited": [
+          "Acme Cloud IT and Security Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a10",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How quickly must I report a lost laptop?",
+        "doc": "Acme Cloud IT and Security Policy",
+        "expect": [
+          "2 hours"
+        ],
+        "answer": "You must report a lost or stolen laptop within **2 hours** of discovering it. This allows IT to lock and wipe the device remotely. [1]",
+        "latency_ms": 1140,
+        "retrieved": [
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud Travel and Expense Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "cited": [
+          "Acme Cloud IT and Security Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a11",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "What is the yearly learning budget?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "50,000"
+        ],
+        "answer": "The yearly learning budget is\u202fRs\u202f50,000 per financial year.\u202f[1]",
+        "latency_ms": 643,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a12",
+        "type": "answerable",
+        "tenant": "acme",
+        "q": "How much is the wellness allowance?",
+        "doc": "Acme Cloud Benefits Guide",
+        "expect": [
+          "1,000"
+        ],
+        "answer": "The wellness allowance is Rs\u202f1,000 per month. [1]",
+        "latency_ms": 878,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Hybrid and Remote Work Policy",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [
+          "Acme Cloud Benefits Guide"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a13",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of paid annual leave do employees get each year?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "18"
+        ],
+        "answer": "Employees receive 18 days of paid annual leave per calendar year. [1]",
+        "latency_ms": 708,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a14",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How many days of casual leave do we get?",
+        "doc": "Globex Manufacturing Leave Policy",
+        "expect": [
+          "3 days"
+        ],
+        "answer": "You get 3 days of casual leave per year. [1]",
+        "latency_ms": 874,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Leave Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a15",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the shift differential for the night shift?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "10%"
+        ],
+        "answer": "The night shift (Shift\u202fC) receives a shift differential of **10\u202f% of basic pay**\u30101\u3011.",
+        "latency_ms": 946,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [],
+        "refused": false,
+        "hit": true,
+        "correct": false,
+        "ok": false
+      },
+      {
+        "id": "a16",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the overtime pay rate?",
+        "doc": "Globex Manufacturing Shift and Overtime Policy",
+        "expect": [
+          "twice"
+        ],
+        "answer": "Overtime is paid at **twice the normal hourly rate** (and at three times the normal rate on public holidays)\u30101\u3011.",
+        "latency_ms": 863,
+        "retrieved": [
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Shift and Overtime Policy"
+        ],
+        "cited": [],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a17",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What is the daily allowance on business travel?",
+        "doc": "Globex Manufacturing Travel and Expense Policy",
+        "expect": [
+          "1,500"
+        ],
+        "answer": "The daily allowance for business travel is\u202fRs\u202f1,500 per day for meals and local travel within India.\u202f[1]",
+        "latency_ms": 933,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a18",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "Can I use a USB drive on my work computer?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "blocked"
+        ],
+        "answer": "No. USB storage drives are blocked on all company computers; you must use the approved Globex OneDrive instead. [1]",
+        "latency_ms": 860,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a19",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "How often do passwords need to be changed?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "90 days"
+        ],
+        "answer": "Passwords must be changed every 90 days. [1]",
+        "latency_ms": 922,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Shift and Overtime Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "a20",
+        "type": "answerable",
+        "tenant": "globex",
+        "q": "What safety gear is required on the production floor?",
+        "doc": "Globex Manufacturing IT and Plant Safety Policy",
+        "expect": [
+          "helmet"
+        ],
+        "answer": "Safety shoes, a helmet, and safety glasses must be worn at all times on the production floor. [1]",
+        "latency_ms": 851,
+        "retrieved": [
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Leave Policy"
+        ],
+        "cited": [
+          "Globex Manufacturing IT and Plant Safety Policy"
+        ],
+        "refused": false,
+        "hit": true,
+        "correct": true,
+        "ok": true
+      },
+      {
+        "id": "u01",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "Who won the cricket world cup?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 319,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u02",
+        "type": "unanswerable",
+        "tenant": "acme",
+        "q": "What is the company's stock price today?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 941,
+        "retrieved": [
+          "Acme Cloud Benefits Guide",
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u03",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "Do we get free gym membership?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 345,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "u04",
+        "type": "unanswerable",
+        "tenant": "globex",
+        "q": "What is the work from anywhere policy?",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 1043,
+        "retrieved": [
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing IT and Plant Safety Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "ok": true
+      },
+      {
+        "id": "x01",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "What is the night shift differential percentage?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 899,
+        "retrieved": [
+          "Acme Cloud Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x02",
+        "type": "cross_tenant",
+        "tenant": "acme",
+        "q": "When is the annual plant maintenance shutdown?",
+        "foreign": "Globex",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 1056,
+        "retrieved": [
+          "Acme Cloud Leave Policy",
+          "Acme Cloud Leave Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud IT and Security Policy",
+          "Acme Cloud Leave Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x03",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "How much is the home office allowance for new joiners?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 405,
+        "retrieved": [
+          "Globex Manufacturing Travel and Expense Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Leave Policy",
+          "Globex Manufacturing Travel and Expense Policy"
+        ],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "x04",
+        "type": "cross_tenant",
+        "tenant": "globex",
+        "q": "Which app is used for multi-factor authentication?",
+        "foreign": "Acme",
+        "answer": "I couldn't find this in your company's policy documents. Please contact HR or IT for help with this one.",
+        "latency_ms": 340,
+        "retrieved": [],
+        "cited": [],
+        "refused": true,
+        "leaked": [],
+        "ok": true
+      },
+      {
+        "id": "t01",
+        "type": "action",
+        "tenant": "acme",
+        "q": "How many leave days do I have left?",
+        "tool": "get_leave_balance",
+        "ok": true,
+        "got_tool": "get_leave_balance"
+      },
+      {
+        "id": "t02",
+        "type": "action",
+        "tenant": "acme",
+        "q": "My laptop battery is broken, please raise a ticket",
+        "tool": "create_it_ticket",
+        "ok": false,
+        "got_tool": null
+      },
+      {
+        "id": "t03",
+        "type": "action",
+        "tenant": "globex",
+        "q": "I am locked out of my account and cannot log in",
+        "tool": "create_it_ticket",
+        "ok": false,
+        "got_tool": null
+      },
+      {
+        "id": "t04",
+        "type": "action",
+        "tenant": "globex",
+        "q": "What is the hotel limit when I travel?",
+        "tool": "search_policies",
+        "ok": true,
+        "got_tool": "search_policies"
+      }
+    ]
+  }
+]
