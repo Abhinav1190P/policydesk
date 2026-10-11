@@ -61,7 +61,7 @@ async def usage_summary(days: int = Query(default=14, ge=1, le=90), user: Curren
         "by_model": [dict(r) for r in by_model],
         "latency_ms": {"p50": latency["p50"], "p95": latency["p95"]},
         "cache_hit_rate": round(latency["cache_hit_rate"] or 0, 4),
-        "budget": {"used_today": await cache.tokens_used_today(user.tenant_id), "daily_limit": s.daily_token_budget, "fallback": s.fallback_backend},
+        "budget": {"used_today": await cache.tokens_used_today(user.tenant_id), "daily_limit": s.daily_token_budget, "fallback": s.fallback_backend, "global_used_today": await cache.global_tokens_today(), "global_daily_limit": s.global_daily_token_budget},
         "documents": {r["status"]: r["n"] for r in docs},
         "queues": queues,
         "aws": await spend.status(),

@@ -57,7 +57,7 @@ export default function Login() {
               <label>Full name<input value={form.name} onChange={set("name")} required /></label>
               <div className="row2">
                 <label>Company code<input value={form.tenant_slug} onChange={set("tenant_slug")} placeholder="acme" required /></label>
-                <label>Invite code<input value={form.invite_code} onChange={set("invite_code")} placeholder="ACME-2026" required /></label>
+                <label>Invite code<input value={form.invite_code} onChange={set("invite_code")} placeholder="From your admin" required /></label>
               </div>
             </>
           )}

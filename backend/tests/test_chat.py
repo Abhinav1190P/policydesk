@@ -157,3 +157,22 @@ async def test_chat_rate_limit(client, fresh_employee, monkeypatch):
     monkeypatch.setattr(s, "rate_limit_burst", 2)
     codes = [(await client.post("/api/chat", headers=fresh_employee["headers"], json={"question": f"core hours {i}?"})).status_code for i in range(3)]
     assert codes == [200, 200, 429]
+
+
+async def test_global_budget_caps_all_tenants(client, fresh_employee, monkeypatch):
+    s = get_settings()
+    monkeypatch.setattr(s, "global_daily_token_budget", 1)
+    await cache.add_tokens("00000000-0000-0000-0000-000000000000", 5)
+    r = await client.post("/api/chat", headers=fresh_employee["headers"], json={"question": "What is the parking policy?"})
+    assert r.status_code == 429
+
+
+async def test_ip_rate_limit_spans_accounts(client, acme_employee, globex_employee, monkeypatch):
+    s = get_settings()
+    monkeypatch.setattr(s, "ip_rate_limit_per_minute", 3)
+    ip = {"cf-connecting-ip": "203.0.113.77"}
+    codes = []
+    for i, who in enumerate([acme_employee, globex_employee, acme_employee, globex_employee]):
+        r = await client.post("/api/chat", headers={**who["headers"], **ip}, json={"question": f"dress code {i}?"})
+        codes.append(r.status_code)
+    assert codes == [200, 200, 200, 429]

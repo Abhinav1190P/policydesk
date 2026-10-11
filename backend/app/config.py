@@ -86,6 +86,8 @@ class Settings(BaseSettings):
     tenant_rate_limit_per_minute: int = 300
     login_attempts_per_minute: int = 10
     daily_token_budget: int = 200000
+    global_daily_token_budget: int = 300000
+    ip_rate_limit_per_minute: int = 30
     agent_session_ttl_s: int = 3600
     max_upload_mb: int = 5
 

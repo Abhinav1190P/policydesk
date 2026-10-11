@@ -53,16 +53,28 @@ async def tokens_used_today(tenant_id: str) -> int:
 
 async def add_tokens(tenant_id: str, tokens: int) -> int:
     key = f"budget:{tenant_id}:{_day()}"
+    gkey = f"budget:global:{_day()}"
     pipe = get_redis().pipeline()
     pipe.incrby(key, tokens)
     pipe.expire(key, 172800)
-    total, _ = await pipe.execute()
+    pipe.incrby(gkey, tokens)
+    pipe.expire(gkey, 172800)
+    total, _, _, _ = await pipe.execute()
     return int(total)
 
 
 async def budget_exhausted(tenant_id: str, limit: int | None = None) -> bool:
     cap = limit or get_settings().daily_token_budget
     return await tokens_used_today(tenant_id) >= cap
+
+
+async def global_tokens_today() -> int:
+    v = await get_redis().get(f"budget:global:{_day()}")
+    return int(v) if v else 0
+
+
+async def global_budget_exhausted() -> bool:
+    return await global_tokens_today() >= get_settings().global_daily_token_budget
 
 
 async def cache_stats() -> dict:

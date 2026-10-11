@@ -108,11 +108,11 @@ def create_app() -> FastAPI:
     for r in (auth.router, chat.router, agent.router, documents.router, tickets.router, admin.router, internal.router):
         app.include_router(r)
 
-    @app.get("/api/ping")
+    @app.api_route("/api/ping", methods=["GET", "HEAD"])
     async def ping():
         return {"ok": True, "instance": s.instance_id}
 
-    @app.get("/api/health")
+    @app.api_route("/api/health", methods=["GET", "HEAD"])
     async def health():
         checks = {}
         try:

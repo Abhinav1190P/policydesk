@@ -14,6 +14,7 @@ os.environ.update(
         "RATE_LIMIT_PER_MINUTE": "6000",
         "RATE_LIMIT_BURST": "1000",
         "TENANT_RATE_LIMIT_PER_MINUTE": "60000",
+        "IP_RATE_LIMIT_PER_MINUTE": "60000",
         "LOGIN_ATTEMPTS_PER_MINUTE": "1000",
         "JWT_SECRET": "test-secret-test-secret-test-secret",
         "INTERNAL_TOOLS_SECRET": "internal-test-secret",

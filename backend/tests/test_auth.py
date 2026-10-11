@@ -46,3 +46,8 @@ async def test_health(client, services):
     r = await client.get("/api/health")
     assert r.status_code == 200 and r.json()["checks"] == {"postgres": "ok", "redis": "ok", "rabbitmq": "ok"}
     assert "X-Instance" in r.headers
+
+
+async def test_ping_answers_head_for_uptime_monitors(client):
+    assert (await client.head("/api/ping")).status_code == 200
+    assert (await client.get("/api/ping")).json()["ok"] is True

@@ -81,12 +81,13 @@ def used_citations(answer: str, hits: list) -> list[dict]:
 
 async def pick_llm(tenant_id: str):
     primary = get_llm()
-    reason = "budget" if await cache.budget_exhausted(tenant_id) else await spend.blocked_reason(primary.backend)
+    over = await cache.budget_exhausted(tenant_id) or await cache.global_budget_exhausted()
+    reason = "budget" if over else await spend.blocked_reason(primary.backend)
     if reason:
         fb = fallback_llm()
         if fb is None or fb is primary:
             msg = {
-                "budget": "Daily AI budget reached for your company. Try again tomorrow.",
+                "budget": "Daily AI budget reached. Try again tomorrow.",
                 "spend_cap": "The daily AWS spending cap has been reached. Try again tomorrow.",
                 "circuit_open": "The AI service is failing right now and has been paused for a few minutes.",
                 "aws_disabled": "AWS calls are switched off on this server.",
